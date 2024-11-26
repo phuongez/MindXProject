@@ -637,6 +637,7 @@
     padding: 80px 135px 60px 135px;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   .featured-container {
@@ -752,4 +753,123 @@
   .guarantee-section p {
     font-size: 14px;
     font-weight: 400;
+  }
+
+  img[alt="Up Arrow"] {
+    width: 46px;
+    position: absolute;
+    right: 89px;
+    bottom: 32px;
+  }
+
+  .footer {
+    color: white;
+    height: 440px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 135px 124px 135px;
+  }
+
+  .footer > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer h1 {
+    font-family: 'Inter';
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .footer h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .footer p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  .footer a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .contact-methods {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .email-field {
+    position: relative;
+  }
+
+  .email-field input {
+    width: 217px;
+    height: 48px;
+    border: 1.5px solid white;
+    background-color: black;
+    border-radius: 4px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+  }
+
+  .email-field input::placeholder {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .support {
+    width: 175px;
+  }
+
+  .account {
+    width: 123px;
+  }
+
+  .quick-link {
+    width: 109px;
+  }
+
+  .download-app {
+    width: 198px;
+  }
+
+  .download-app p {
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 70%;
+  }
+
+  .email-field img {
+    width: 24px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .app-download {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .social-medias {
+    display: flex;
+    gap: 24px;
+  }
+
+  img[alt="QR Code"] {
+    width: 76px;
+  }
+
+  .app-download img {
+    width: 110px;
   }
