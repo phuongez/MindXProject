@@ -18,6 +18,15 @@
     font-size: 16px;
     width: 1440px;
   }
+
+  button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
   
   img, picture, video, canvas, svg {
     display: block;
@@ -872,4 +881,151 @@
 
   .app-download img {
     width: 110px;
+  }
+
+  .signup-container {
+    display: flex;
+    align-items: center;
+    gap: 129px;
+    margin-top: 60px;
+    margin-bottom: 140px;
+  }
+
+  .signup-container form {
+    width: 371px;
+    height: 530px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .signup-container form h1 {
+    font-family: 'Inter';
+    font-size: 36px;
+    font-weight: 500;
+  }
+
+  .signup-container form p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 48px;
+  }
+
+  .signup-container form input {
+    width: 100%;
+    margin-bottom: 40px;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+    padding-bottom: 8px;
+  }
+
+  .signup-container form input::placeholder {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  button#create-account {
+    background-color: #DB4444;
+    color: white;
+    border: 0;
+    padding: 16px 122px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+  button#sign-google {
+    background-color: white;
+    color: black;
+    border: 0;
+    padding: 16px 85px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, .4);
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .have-account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .have-account p#have-account {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 0; 
+}
+
+  .have-account button {
+    width: 50px;
+    height: 28px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 0;
+    background-color: white;
+    padding: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+  }
+
+  .login-container {
+    display: flex;
+    align-items: center;
+    gap: 129px;
+  }
+  
+  .login-container form {
+    width: 371px;
+    height: 326px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-container form h1 {
+    font-family: 'Inter';
+    font-size: 36px;
+    font-weight: 500;
+  }
+
+  .login-container form p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 48px;
+  }
+
+  .login-container form input {
+    width: 100%;
+    margin-bottom: 40px;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+    padding-bottom: 8px;
+  }
+
+  .login-container form input::placeholder {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .button-container {
+    display: flex;
+    gap: 87px;
+    align-items: center;
+  }
+
+  button#login-button {
+    width: 143px;
+    background-color: #DB4444;
+    color: white;
+    border: 0;
+    padding: 16px 48px;
+    border-radius: 4px;
+  }
+
+  button#forget-password {
+    width: 145px;
+    height: 24px;
+    background-color: white;
+    border: white;
+    padding: 0;
+    color: #DB4444;
   }

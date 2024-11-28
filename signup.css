@@ -1,0 +1,365 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  * {
+    margin: 0;
+  }
+  
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Poppins", serif;
+    font-size: 16px;
+    width: 1440px;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  p {
+    text-wrap: pretty;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  
+  #root, #__next {
+    isolation: isolate;
+  }
+
+  button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+  }
+
+  .event {
+    height: 48px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+
+  .event-group {
+    width: 859px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 445px;
+    /* margin-right: 136px; */
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .event-group-left {
+    display: flex;
+    gap: 8px;
+  }
+
+  .shop-now {
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+  }
+
+  .language {
+    display: flex;
+    gap: 5px;
+  }
+
+  .language-choice {
+    font-size: 24px;
+    line-height: 24px;
+    position: relative;
+    top: -8px;
+  }
+
+  .header {
+    width: 100%;
+    height: 94px;
+    padding: 40px 135px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+  }
+
+  .navigation {
+    width: 1170px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    margin-right: 190px;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 48px;
+    margin-right: 148px;
+    font-size: 16px;
+    padding: 0;
+  }
+
+  .nav li {
+    list-style-type: none;
+  }
+
+  .header-right {
+    display: flex;
+    width: 347px;
+    justify-content: end;
+  }
+
+  .looking-item {
+    position: relative;
+  }
+
+  #looking {
+    width: 243px;
+    height: 38px;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 70px 10px 20px;
+    margin-right: 24px;
+  }
+
+  #looking::placeholder {
+    color: black;
+    opacity: 50%;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  img[alt="wishlist"] {
+    margin-right: 16px;
+    height: 32px;
+  }
+
+  img[alt="cart"] {
+    height: 32px;
+  }
+
+  img[alt="find"] {
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    /* transform: translateX(-50%); */
+    transform: translateY(-50%);
+  }
+
+  .signup-container {
+    display: flex;
+    align-items: center;
+    gap: 129px;
+    margin-top: 60px;
+    margin-bottom: 140px;
+  }
+
+  .signup-container form {
+    width: 371px;
+    height: 530px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .signup-container form h1 {
+    font-family: 'Inter';
+    font-size: 36px;
+    font-weight: 500;
+  }
+
+  .signup-container form p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 48px;
+  }
+
+  .signup-container form input {
+    width: 100%;
+    margin-bottom: 40px;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+    padding-bottom: 8px;
+  }
+
+  .signup-container form input::placeholder {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  button#create-account {
+    background-color: #DB4444;
+    color: white;
+    border: 0;
+    padding: 16px 122px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+  button#sign-google {
+    background-color: white;
+    color: black;
+    border: 0;
+    padding: 16px 85px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, .4);
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .have-account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .have-account p#have-account {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 0; 
+}
+
+  .have-account button {
+    width: 50px;
+    height: 28px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 0;
+    background-color: white;
+    padding: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+  }
+
+  .footer {
+    color: white;
+    height: 440px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 135px 124px 135px;
+  }
+
+  .footer > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer h1 {
+    font-family: 'Inter';
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .footer h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .footer p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  .footer a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .contact-methods {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .email-field {
+    position: relative;
+  }
+
+  .email-field input {
+    width: 217px;
+    height: 48px;
+    border: 1.5px solid white;
+    background-color: black;
+    border-radius: 4px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+  }
+
+  .email-field input::placeholder {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .support {
+    width: 175px;
+  }
+
+  .account {
+    width: 123px;
+  }
+
+  .quick-link {
+    width: 109px;
+  }
+
+  .download-app {
+    width: 198px;
+  }
+
+  .download-app p {
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 70%;
+  }
+
+  .email-field img {
+    width: 24px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .app-download {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .social-medias {
+    display: flex;
+    gap: 24px;
+  }
+
+  img[alt="QR Code"] {
+    width: 76px;
+  }
+
+  .app-download img {
+    width: 110px;
+  }
