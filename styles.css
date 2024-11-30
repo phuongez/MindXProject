@@ -445,15 +445,40 @@
   .rating {
     display: flex;
     gap: 8px;
+    align-items: center;
   }
 
   .rating-stars {
+    width: 100px;
     display: flex;
     position: relative;
   }
 
-  .rating-stars img {
+  .star-container {
+    position: relative;
+    display: inline-block;
     width: 20px;
+    height: 20px;
+  }
+  
+  .star-svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: #FFAD33;
+  }
+  
+  .star-svg.gray {
+    fill: rgba(0, 0, 0, 0.25); /* Xám */
+    z-index: 1;
+  }
+  
+  .star-svg.yellow {
+    fill: #FFAD33; /* Vàng */
+    z-index: 2;
+    clip-path: inset(0 50% 0 0); /* Hiển thị nửa trái */
   }
 
   .rating-numbers {
@@ -461,7 +486,7 @@
     font-weight: 600;
   }
 
-  .star-gray {
+  /* .star-gray {
     filter: grayscale(100%) brightness(0.99);
     z-index: 1;
   }
@@ -472,7 +497,7 @@
     right: 0;
     z-index: 2;
     clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-  }
+  } */
 
   .view-all-product {
     display: flex;
