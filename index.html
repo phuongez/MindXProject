@@ -46,8 +46,14 @@
                     <input type="text" id="looking" name="looking" placeholder="What are you looking for?">
                     <img src="./images/Component 2.png" alt="find">
                 </div>
-                <img src="./images/Wishlist.png" alt="wishlist">
-                <img src="./images/Cart1 with buy.png" alt="cart">
+                <div class="header-icons">
+                    <img src="./images/Wishlist.png" alt="wishlist">
+                    <div class="cart-icon">
+                        <img src="./images/Cart1 with buy.png" alt="cart" id="user-cart">
+                        <div class="cart-number" id="cart-number"></div>
+                    </div>
+                    <img src="./images/user.svg" alt="user icon">
+                </div>
             </div>
         </div>
     </div>
@@ -277,6 +283,7 @@
             <img src="./images/products/Ellipse 23.png" alt="Product effect" id="product-effect">
         </div>
     </div>
+    <!--Our Product Section  -->
     <div class="our-product">
         <div class="division-title">
             <div class="red-mark"></div>
@@ -286,12 +293,9 @@
             <div class="left-part">
                 <div class="flash-sale-text">Explore Our Products</div>
             </div>
-            <!-- <div class="view-all-button">
-                View All
-            </div> -->
         </div>
-        <div class="products">
-            <div class="sale-product1">
+        <div class="products" id="full-product-section"></div>
+            <!-- <div class="sale-product1">
                 <div class="product-container">
                     <img src="./images/products/Frame 604.png" alt="sale item">
                     <button class="add-to-cart">Add To Cart</button>
@@ -301,7 +305,6 @@
                 <p class="product-name">Breed Dry Dog Food</p>
                 <div class="product-price">
                     <p class="sale-price">$100</p>
-                    <!-- <p class="original-price">$360</p> -->
                 </div>
                 <div class="rating">
                     <div class="rating-stars">
@@ -324,7 +327,6 @@
                 <p>CANON EOS DSLR Camera</p>
                 <div class="product-price">
                     <p class="sale-price">$360</p>
-                    <!-- <p class="original-price">$1160</p> -->
                 </div>
                 <div class="rating">
                     <div class="rating-stars">
@@ -347,7 +349,6 @@
                 <p class="product-name">ASUS FHD Gaming Laptop</p>
                 <div class="product-price">
                     <p class="sale-price">$700</p>
-                    <!-- <p class="original-price">$170</p> -->
                 </div>
                 <div class="rating">
                     <div class="rating-stars">
@@ -370,7 +371,6 @@
                 <p class="product-name">Curology Product Set</p>
                 <div class="product-price">
                     <p class="sale-price">$500</p>
-                    <!-- <p class="original-price"></p> -->
                 </div>
                 <div class="rating">
                     <div class="rating-stars">
@@ -383,7 +383,6 @@
                     <p class="rating-numbers">(145)</p>
                 </div>
             </div>
-            
         </div>
         <div class="products">
             <div class="sale-product1">
@@ -396,7 +395,6 @@
                 <p class="product-name">Kids Electric Car</p>
                 <div class="product-price">
                     <p class="sale-price">$960</p>
-                    <!-- <p class="original-price">$360</p> -->
                 </div>
                 <div class="rating">
                     <div class="rating-stars">
@@ -422,7 +420,6 @@
                 <p>CANON EOS DSLR Camera</p>
                 <div class="product-price">
                     <p class="sale-price">$360</p>
-                    <!-- <p class="original-price">$1160</p> -->
                 </div>
                 <div class="rating">
                     <div class="rating-stars">
@@ -445,7 +442,6 @@
                 <p class="product-name">ASUS FHD Gaming Laptop</p>
                 <div class="product-price">
                     <p class="sale-price">$700</p>
-                    <!-- <p class="original-price">$170</p> -->
                 </div>
                 <div class="rating">
                     <div class="rating-stars">
@@ -468,7 +464,6 @@
                 <p class="product-name">Curology Product Set</p>
                 <div class="product-price">
                     <p class="sale-price">$500</p>
-                    <!-- <p class="original-price"></p> -->
                 </div>
                 <div class="rating">
                     <div class="rating-stars">
@@ -482,11 +477,12 @@
                 </div>
             </div>
             
-        </div>
-        <div class="view-all-product">
-            <button class="view-all-product-button">View All Products</button>
-        </div>
+        </div> -->
+    <div class="view-all-product">
+        <button class="view-all-product-button">View All Products</button>
     </div>
+    
+<!-- Featured Section     -->
     <div class="featured">
         <div class="division-title">
             <div class="red-mark"></div>
@@ -550,7 +546,7 @@
                 <p>We reurn money within 30 days</p>
             </div>
         </div> 
-        <img src="./images/products/Fill with Up Arrow.png" alt="Up Arrow">
+        <img src="./images/products/Fill with Up Arrow.png" alt="Up Arrow" id="scrollToTopBtn">
     </div>
     <div class="footer">
         <div class="exclusive">

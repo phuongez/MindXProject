@@ -245,4 +245,64 @@ const products = [
     }
 ];
 
+function renderStars(rating) {
+    let starHTML = '';
+    for (let i = 1; i <= 5; i++) {
+      if (rating >= i) {
+        // Sao vàng đầy
+        starHTML += `
+          <div class="star-container">
+            <svg class="star-svg">
+              <use href="#star-shape"></use>
+            </svg>
+          </div>`;
+      } else if (rating >= i - 0.5) {
+        // Sao nửa vàng
+        starHTML += `
+          <div class="star-container">
+            <svg class="star-svg gray">
+              <use href="#star-shape"></use>
+            </svg>
+            <svg class="star-svg yellow">
+              <use href="#star-shape"></use>
+            </svg>
+          </div>`;
+      } else {
+        // Sao xám
+        starHTML += `
+          <div class="star-container">
+            <svg class="star-svg gray">
+              <use href="#star-shape"></use>
+            </svg>
+          </div>`;
+      }
+    }
+    return starHTML;
+  }
+
+  function displaySale(product) {
+    let saleHTML = "";
+    if(product.discountRate > 0) {
+        saleHTML = `<div class="sale-percentage">${product.discountRate}%</div>`;
+    }
+    return saleHTML; 
+  }
+
+  function displayProductPrice(product) {
+    let priceHTML ="";
+    if (!(product.discountPrice == product.price)) {
+        priceHTML = `
+        <p class="sale-price">$${product.discountPrice}</p>
+        <p class="original-price">$${product.price}</p>
+        `
+    } else {
+        priceHTML =
+        `
+        <p class="sale-price">$${product.discountPrice}</p>
+        `
+    }
+    return priceHTML;
+  }
+
 export default products;
+export {renderStars,displaySale,displayProductPrice}
