@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Engagement&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script defer src="signup.js"></script>
 </head>
 <body>
     <div class="event">
@@ -30,10 +31,10 @@
                 <img src="./images/Logo.png" alt="">
             </div>
             <ul class="nav">
-                <li>Home</li>
-                <li>Contact</li>
-                <li>About</li>
-                <li>Sign Up</li>
+                <li id="home">Home</li>
+                <li id="contact">Contact</li>
+                <li id="about">About</li>
+                <li id="sign-up">Sign Up</li>
             </ul>
             <div class="header-right">
                 <div class="looking-item">
@@ -47,19 +48,19 @@
     </div>
     <div class="signup-container">
         <img src="./images/signup imgs/Side Image.png" alt="Shopping cart image">
-        <form action="#" method="post">
+        <form action="#" method="post" id="registerForm">
             <h1>Create an account</h1>
             <p>Enter your details below</p>
             <div class="fill-field">
-                <input type="text" placeholder="Name" id="name">
-                <input type="text" placeholder="Email or Phone Number" id="contact">
-                <input type="password" placeholder="Password">
+                <input type="text" placeholder="Name" id="name" required>
+                <input type="text" placeholder="Email" id="email" required>
+                <input type="password" placeholder="Password" id="password" required>
             </div>
             <button id="create-account">Create account</button>
-            <button id="sign-google"><span><img src="./images/signup imgs/Icon-Google.png" alt="Google icon"></span>Sign up with Google</button>
+            <!-- <button id="sign-google"><span><img src="./images/signup imgs/Icon-Google.png" alt="Google icon"></span>Sign up with Google</button> -->
             <div class="have-account">
                 <p id="have-account">Already have account?</p>
-                <button>Log in</button>
+                <button id="log-in">Log in</button>
             </div>
         </form>
     </div>

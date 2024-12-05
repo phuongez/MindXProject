@@ -1,5 +1,25 @@
 import products, {renderStars,displaySale,displayProductPrice} from "./product.js";
 
+const homeButton = document.querySelector("#home");
+homeButton.addEventListener('click',() => {
+  window.location.href ="index.html";
+})
+
+const contactButton = document.querySelector("#contact");
+contactButton.addEventListener('click',() => {
+  window.location.href ="contact.html";
+})
+
+const aboutButton = document.querySelector("#about");
+aboutButton.addEventListener('click',() => {
+  window.location.href ="about.html";
+})
+
+const signUpButton = document.querySelector("#sign-up");
+signUpButton.addEventListener('click',() => {
+  window.location.href ="signup.html";
+})
+
 function displayFlashProducts(products) {
     const productContainer = document.getElementById('product-list');
     products.forEach(product => {
@@ -175,25 +195,7 @@ scrollToTopBtn.addEventListener('click', () => {
 //Tính năng giỏ hàng
 const cart = [];
 
-// function addToCart(product) {
-//   const existingProduct = cart.find(item => item.id === product.id);
-  
-//   if (existingProduct) {
-//     existingProduct.quantity += 1; 
-//   } else {
-//     cart.push({ ...product, quantity: 1 }); 
-//   }
-// }
-
-// function displayItemsNumber() {
-//   const numberInCartContainer = document.querySelector("#cart-number");
-//   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-//   numberInCartContainer.textContent = totalItems;
-//   numberInCartContainer.style.opacity = totalItems > 0 ? "100%" : "0%";
-// }
-
 function addToCart(product) {
-  console.log("Sản phẩm truyền vào addToCart:", product);
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const existingProduct = cart.find(item => item.id === product.id);
 
@@ -210,7 +212,7 @@ function addToCart(product) {
   }
 
   localStorage.setItem('cart', JSON.stringify(cart));
-  console.log("Giỏ hàng sau khi thêm:", cart);
+  // console.log("Giỏ hàng sau khi thêm:", cart);
   displayItemsNumber();
 }
 
@@ -250,5 +252,40 @@ userCartButton.addEventListener('click', () => {
 window.addEventListener('DOMContentLoaded', () => {
   localStorage.removeItem('cart'); // Xóa dữ liệu giỏ hàng khỏi Local Storage
 });
+
+//Thay đổi hiển thị khi người dùng đăng nhập
+document.addEventListener('DOMContentLoaded', () => {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const userButton = document.getElementById("user-button");
+  const userOptions = document.getElementById("user-options");
+  if(currentUser) {
+    userButton.style.display = "block";
+    userButton.addEventListener('click',(e) => {
+      e.stopPropagation();
+      userOptions.classList.toggle("show");
+    });
+    window.addEventListener('click', (event) => { 
+      if (!event.target.matches('#user-button')) { 
+        if (userOptions.classList.contains('show')) { 
+          userOptions.classList.remove('show'); 
+        } 
+      } 
+    });
+  } else {
+    userButton.style.display = "none";
+  }
+})
+
+//Đăng xuất tài khoản
+function logoutUser() {
+  localStorage.removeItem('currentUser');
+  // window.location.href = 'login.html';
+}
+
+const logoutBtn = document.getElementById("logout");
+logoutBtn.addEventListener('click',() =>{
+  logoutUser();
+  document.getElementById("user-button").style.display = "none";
+})
 
 export {cart};
