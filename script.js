@@ -1,4 +1,6 @@
-import products, {renderStars,displaySale,displayProductPrice} from "./product.js";
+import {renderStars,displaySale,displayProductPrice} from "./product.js";
+// import products, {renderStars,displaySale,displayProductPrice} from "./product.js";
+
 
 const homeButton = document.querySelector("#home");
 homeButton.addEventListener('click',() => {
@@ -20,6 +22,19 @@ signUpButton.addEventListener('click',() => {
   window.location.href ="signup.html";
 })
 
+// Lấy products từ lưu trữ
+function getProductsFromLocalStorage() {
+  return JSON.parse(localStorage.getItem("products")) || [];
+}
+
+const products = getProductsFromLocalStorage();
+
+// Danh sách sale
+const flashSaleProducts = products.filter((product)=>product.discountRate>0);
+
+// Danh sách sắp xếp theo lượng bán
+const sortedSaleProduct = products.sort((a,b) => b.sell - a.sell);
+
 function displayFlashProducts(products) {
     const productContainer = document.getElementById('product-list');
     products.forEach(product => {
@@ -32,7 +47,6 @@ function displayFlashProducts(products) {
                     <div class="sale-percentage">${product.discountRate}%</div>
                     <button class="add-to-cart">Add To Cart</button>
                     <div class="favorite-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>heart-outline</title><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg></div>
-                    <div class="seen-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>eye-outline</title><path d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" /></svg></div>
                 </div>
                 <a href="product.html?id=${product.id}" class="product-name">${product.name}</a>
                 <div class="product-price">
@@ -49,7 +63,37 @@ function displayFlashProducts(products) {
   });
 }
 
-const flashSaleProducts = products.filter((product)=>product.discountRate>0); 
+displayFlashProducts(flashSaleProducts);
+
+function displayBestSellProducts(products) {
+  const productContainer = document.getElementById('best-sell');
+  products.forEach(product => {
+  const productHTML = `
+    <div class="sale-product">
+              <div class="product-container" data-id=${product.id} data-name="${product.name}" data-price=${product.discountPrice} data-image="${product.img}">
+                  <a href="product.html?id=${product.id}">
+                      <img src="${product.img}" alt="sale item">
+                  </a>
+                  <div class="sale-percentage">${product.discountRate}%</div>
+                  <button class="add-to-cart">Add To Cart</button>
+                  <div class="favorite-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>heart-outline</title><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg></div>
+              </div>
+              <a href="product.html?id=${product.id}" class="product-name">${product.name}</a>
+              <div class="product-price">
+                  <p class="sale-price">$${product.discountPrice}</p>
+                  <p class="original-price">$${product.price}</p>
+              </div>
+              <div class="rating">
+                  <div class="rating-stars">${renderStars(product.rating)}</div>
+                  <p class="rating-numbers">(${product.numberRating})</p>
+              </div>
+          </div>
+  `;
+  productContainer.innerHTML += productHTML;
+});
+}
+
+displayBestSellProducts(sortedSaleProduct)
 
 
 const carousel = document.querySelector('#product-list');
@@ -77,17 +121,23 @@ nextButton.addEventListener('click', () => {
 });
 
 
-//Hiển thị tất cả sản phẩm
+//Hiển thị tất cả sản phẩm sale
 let allProductView = false;
-const viewAllProducts1 = document.querySelector(".view-all-product-button");
-viewAllProducts1.addEventListener('click',() =>{
+const viewAllSellProducts = document.querySelector(".view-all-sale-button");
+viewAllSellProducts.addEventListener('click',() =>{
     const allProductsView = document.querySelector("#product-list");
     if(!allProductView) {
         allProductsView.style.display = 'grid';
         allProductsView.style.gridTemplateColumns = 'repeat(4,270px)';
+        nextButton.style.display = "none";
+        prevButton.style.display = "none";
+        viewAllSellProducts.textContent = "Collapse"
         allProductView = !allProductView;
     } else {
         allProductsView.style.display = 'flex';
+        nextButton.style.display = "block";
+        prevButton.style.display = "block";
+        viewAllSellProducts.textContent = "All Sale Products"
         allProductView = !allProductView;
     }   
 })
@@ -125,7 +175,7 @@ dots.forEach(dot => {
 //Countdown flashsale
 const countdownElement = document.getElementById('countdown-timer');
 
-// Xác định thời gian kết thúc (ví dụ: 4 ngày kể từ hiện tại)
+// Thời gian kết thúc (4 ngày kể từ hiện tại)
 const endTime = new Date().getTime() + 4 * 24 * 60 * 60 * 1000;
 
 function updateCountdown() {
@@ -152,35 +202,44 @@ function updateCountdown() {
 const countdownInterval = setInterval(updateCountdown, 1000);
 
 updateCountdown();
-displayFlashProducts(flashSaleProducts);
+
 
 //Our product display
 const ourProductContainer = document.getElementById('full-product-section');
-    products.filter((product)=>product.id<9).forEach(product => {
-    const productHTML = `
-      <div class="sale-product">
-                <div class="product-container" data-id=${product.id} data-name="${product.name}" data-price=${product.discountPrice} data-image="${product.img}">
-                    <a href="product.html?id=${product.id}">
-                        <img src="${product.img}" alt="sale item">
-                    </a>
-                    <div class="sale-percentage">${product.discountRate}%</div>
-                    <button class="add-to-cart">Add To Cart</button>
-                    <div class="favorite-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>heart-outline</title><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg></div>
-                    <div class="seen-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>eye-outline</title><path d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" /></svg></div>
-                </div>
-                <a href="product.html?id=${product.id}" class="product-name">${product.name}</a>
-                <div class="product-price">
-                    <p class="sale-price">$${product.discountPrice}</p>
-                    <p class="original-price">$${product.price}</p>
-                </div>
-                <div class="rating">
-                    <div class="rating-stars">${renderStars(product.rating)}</div>
-                    <p class="rating-numbers">(${product.numberRating})</p>
-                </div>
-            </div>
-    `;
-    ourProductContainer.innerHTML += productHTML;
-  }); 
+  products.forEach(product => {
+  const productHTML = `
+    <div class="sale-product">
+              <div class="product-container" data-id=${product.id} data-name="${product.name}" data-price=${product.discountPrice} data-image="${product.img}">
+                  <a href="product.html?id=${product.id}">
+                      <img src="${product.img}" alt="sale item">
+                  </a>
+                  <div class="sale-percentage">${product.discountRate}%</div>
+                  <button class="add-to-cart">Add To Cart</button>
+                  <div class="favorite-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>heart-outline</title><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg></div>
+              </div>
+              <a href="product.html?id=${product.id}" class="product-name">${product.name}</a>
+              <div class="product-price">
+                  <p class="sale-price">$${product.discountPrice}</p>
+                  <p class="original-price">$${product.price}</p>
+              </div>
+              <div class="rating">
+                  <div class="rating-stars">${renderStars(product.rating)}</div>
+                  <p class="rating-numbers">(${product.numberRating})</p>
+              </div>
+          </div>
+  `;
+  ourProductContainer.innerHTML += productHTML;
+}); 
+
+const showAllButton = document.getElementById('view-all-product-button'); 
+const productGrid = document.getElementById('full-product-section'); 
+showAllButton.addEventListener('click', () => { 
+  if (productGrid.style.maxHeight === 'none') { 
+    productGrid.style.maxHeight = '760px'; 
+    showAllButton.textContent = 'View All Product'; 
+  } else { 
+    productGrid.style.maxHeight = 'none'; 
+    showAllButton.textContent = 'View Less'; } });
 
 //Scroll to top
 const scrollToTopBtn = document.getElementById('scrollToTopBtn');
@@ -194,6 +253,7 @@ scrollToTopBtn.addEventListener('click', () => {
 
 //Tính năng giỏ hàng
 const cart = [];
+const cartDisplay = document.querySelector(".cart-icon");
 
 function addToCart(product) {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -212,7 +272,6 @@ function addToCart(product) {
   }
 
   localStorage.setItem('cart', JSON.stringify(cart));
-  // console.log("Giỏ hàng sau khi thêm:", cart);
   displayItemsNumber();
 }
 
@@ -249,8 +308,9 @@ userCartButton.addEventListener('click', () => {
     window.location.href = 'cart.html';
 });
 
+// Xóa dữ liệu giỏ hàng khỏi Local Storage
 window.addEventListener('DOMContentLoaded', () => {
-  localStorage.removeItem('cart'); // Xóa dữ liệu giỏ hàng khỏi Local Storage
+  localStorage.removeItem('cart'); 
 });
 
 //Thay đổi hiển thị khi người dùng đăng nhập
@@ -263,6 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
     userButton.addEventListener('click',(e) => {
       e.stopPropagation();
       userOptions.classList.toggle("show");
+      cartDisplay.style.display = "block";
     });
     window.addEventListener('click', (event) => { 
       if (!event.target.matches('#user-button')) { 
@@ -273,6 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   } else {
     userButton.style.display = "none";
+    cartDisplay.style.display = "none";
   }
 })
 
@@ -286,6 +348,124 @@ const logoutBtn = document.getElementById("logout");
 logoutBtn.addEventListener('click',() =>{
   logoutUser();
   document.getElementById("user-button").style.display = "none";
+})
+
+//Gợi ý sản phẩm tìm kiếm
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("search-input");
+  const suggestionsList = document.getElementById("search-suggestions");
+
+  searchInput.addEventListener("input", () => {
+    const keyword = searchInput.value.trim().toLowerCase();
+    const products = getProductsFromLocalStorage();
+
+    const filteredProducts = products.filter(product =>
+      product.name.toLowerCase().includes(keyword)
+    );
+
+    suggestionsList.innerHTML = "";
+    filteredProducts.forEach(product => {
+      const suggestionItem = document.createElement("li");
+      suggestionItem.innerHTML = `
+        <a href="product.html?id=${product.id}" class="search-item" data-id=${product.id}>
+          <img src="${product.img}" alt="Product thumbail" class="search-item-img">
+          <span class="search-item-name">${product.name}</span>
+        </a>  
+      `;
+      suggestionsList.appendChild(suggestionItem);
+    });
+
+    suggestionsList.style.display = filteredProducts.length > 0 ? "flex" : "none";
+  });
+});
+
+//Hiện sản phẩm theo category
+const categoryContainer = document.getElementById("product-by-category");
+const categoryBtns = document.querySelectorAll(".category-button");
+categoryBtns.forEach(button => button.addEventListener('click',() => {
+  categoryContainer.innerHTML ="";
+  const productOfCategory = products.filter(product => product.category===button.dataset.category);
+  if (productOfCategory.length == 0) {
+    categoryContainer.style.display = "flex";
+    categoryContainer.innerHTML ="<i>Products in this category will be updated soon</i>";
+  }
+  categoryContainer.style.display = "grid";
+  productOfCategory.forEach(item => {
+    const productHTML = `
+    <div class="sale-product">
+              <div class="product-container" data-id=${item.id} data-name="${item.name}" data-price=${item.discountPrice} data-image="${item.img}">
+                  <a href="product.html?id=${item.id}">
+                      <img src="${item.img}" alt="sale item">
+                  </a>
+                  <div class="sale-percentage">${item.discountRate}%</div>
+                  <button class="add-to-cart">Add To Cart</button>
+                  <div class="favorite-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>heart-outline</title><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg></div>
+              </div>
+              <a href="product.html?id=${item.id}" class="product-name">${item.name}</a>
+              <div class="product-price">
+                  <p class="sale-price">$${item.discountPrice}</p>
+                  <p class="original-price">$${item.price}</p>
+              </div>
+              <div class="rating">
+                  <div class="rating-stars">${renderStars(item.rating)}</div>
+                  <p class="rating-numbers">(${item.numberRating})</p>
+              </div>
+          </div>
+  `;
+  categoryContainer.innerHTML += productHTML;
+  })
+}))
+
+// Special offer
+const specialOfferBtn = document.querySelector(".buynow-button");
+specialOfferBtn.addEventListener('click',() => {
+  window.location.href= "product.html?id=11";
+})
+
+// Special offer countdown
+const countdownTimer = document.getElementById('timer');
+
+// Thời gian kết thúc (4 ngày kể từ hiện tại)
+const specialEndTime = new Date().getTime() + 6 * 24 * 60 * 60 * 1000;
+
+function specialCountdown() {
+  const now = new Date().getTime();
+  const timeLeft = specialEndTime - now;
+
+  if (timeLeft <= 0) {
+    clearInterval(specialCountdownInterval);
+    countdownTimer.innerHTML = "Kết thúc!";
+    return;
+  }
+
+  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+  document.getElementById('timer-day-number').textContent = days;
+  document.getElementById('timer-hour-number').textContent = String(hours).padStart(2, '0');
+  document.getElementById('timer-minute-number').textContent = String(minutes).padStart(2, '0');
+  document.getElementById('timer-second-number').textContent = String(seconds).padStart(2, '0');
+}
+
+const specialCountdownInterval = setInterval(specialCountdown, 1000);
+
+specialCountdown();
+
+//Tính năng chưa làm
+document.querySelectorAll('.browse-category').forEach(button => {
+  button.addEventListener('click',() => {
+    alert("Tính năng đang hoàn thiện");
+  })
+})
+
+document.querySelector("#send-email").addEventListener('click',() => {
+  alert("Tính năng đang hoàn thiện");
+})
+
+document.querySelectorAll(".account-option").addEventListener('click',() => {
+  alert("Tính năng đang hoàn thiện");
 })
 
 export {cart};

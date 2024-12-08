@@ -94,3 +94,33 @@ document.addEventListener('click', (e) => {
   returnButton.addEventListener('click',() => {
     window.location.href = "index.html";
     })
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const cartSubtotal = document.getElementById("cart-subtotal");
+    const totalCost = document.getElementById("total-cost");
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    if (cart.length > 0) {
+        const subtotal = cart.reduce(
+        (accumulator, product) => accumulator + product.price * product.quantity,
+          0
+      );
+      cartSubtotal.textContent = `$${subtotal}`;
+    } else {
+      cartSubtotal.textContent = "$0";
+    }
+    totalCost.textContent = cartSubtotal.textContent;
+  });
+
+  document.querySelector(".checkout-button").addEventListener('click',()=>{
+    alert("Tính năng đang hoàn thiện");
+  })
+
+  document.querySelector(".apply-coupon-btn").addEventListener('click',()=>{
+    alert("Tính năng đang hoàn thiện");
+  })
+
+  
+    
+  
+  

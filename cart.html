@@ -16,7 +16,7 @@
           <path d="M10 1.67c0.33 0 0.67 0.25 0.83 0.58l2.08 4.42 4.67 0.67c0.75 0.08 1 1 0.5 1.5l-3.42 3.33 0.83 4.67c0.17 0.75-0.67 1.33-1.33 1l-4.17-2.17-4.17 2.17c-0.67 0.33-1.5-0.25-1.33-1l0.83-4.67-3.42-3.33c-0.5-0.5-0.17-1.42 0.5-1.5l4.67-0.67 2.08-4.42c0.17-0.33 0.5-0.58 0.83-0.58z" />
         </symbol>
     </svg>
-    <div class="event">
+    <!-- <div class="event">
         <div class="event-group">
             <div class="event-group-left">
                 <div class="event-desciption">
@@ -29,7 +29,7 @@
                 <div class="language-choice">⌄</div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="header">
         <div class="navigation">
             <div class="logo">
@@ -43,14 +43,32 @@
             </ul>
             <div class="header-right">
                 <div class="looking-item">
-                    <input type="text" id="looking" name="looking" placeholder="What are you looking for?">
+                    <input type="text" id="search-input" name="search-input" placeholder="What are you looking for?">
+                    <ul id="search-suggestions" class="suggestions-list"></ul>
                     <img src="./images/Component 2.png" alt="find">
                 </div>
-                <div class="header-icons">
+                <!-- <div class="header-icons">
                     <img src="./images/Wishlist.png" alt="wishlist">
-                    <img src="./images/Cart1 with buy.png" alt="cart">
-                    <img src="./images/user.svg" alt="user icon">
-                </div>
+                    <div class="cart-icon">
+                        <img src="./images/Cart1 with buy.png" alt="cart" id="user-cart">
+                        <div class="cart-number" id="cart-number"></div>
+                    </div>
+                    <div class="user-options-container">
+                        <img src="./images/user.svg" alt="user icon" id="user-button">
+                        <div id="user-options">
+                            <img src="./images/icon-user.svg" alt="User icon">
+                            <p>Manage My Account</p>
+                            <img src="./images/icon-mallbag.svg" alt="Order icon">
+                            <p>My Order</p>
+                            <img src="./images/icon-cancel.svg" alt="Cancel icon">
+                            <p>My Cancellations</p>
+                            <img src="./images/Icon-Reviews.svg" alt="Review icon">
+                            <p>My Reviews</p>
+                            <img src="./images/Icon-logout.svg" alt="Logout icon">
+                            <p id="logout">Logout</p>
+                        </div>
+                    </div>    
+                </div> -->
             </div>
         </div>
     </div>
@@ -101,13 +119,13 @@
         <div class="coupon-carttotal">
             <div class="apply-coupon">
                 <input type="text" placeholder="Coupon Code">
-                <button>Apply Coupon</button>
+                <button class="apply-coupon-btn">Apply Coupon</button>
             </div>
             <div class="checkout">
                 <h1>Cart Total</h1>
                 <div class="cart-subtotal">
                     <p>Subtotal:</p>
-                    <p>$1750</p>
+                    <p id="cart-subtotal"></p>
                 </div>
                 <div class="cart-shipping">
                     <p>Shipping:</p>
@@ -115,7 +133,7 @@
                 </div>
                 <div class="cart-total">
                     <p>Total:</p>
-                    <p>$1750</p>
+                    <p id="total-cost"></p>
                 </div>
                 <button class="checkout-button">Process To Checkout</button>
             </div>

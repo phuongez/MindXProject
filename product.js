@@ -12,6 +12,7 @@ const products = [
         description: "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
         color: ["grey", "red"],
         size: [],
+        sell: 100,
         img: "./images/products/image 63.png",
         img2: "./images/products/image 57.png",
         img3: "./images/products/image 58.png",
@@ -31,7 +32,12 @@ const products = [
         description: "LED Backlit Gaming Keyboard High-quality mechanical switches with customizable RGB lighting. Durable design with anti-ghosting keys for precise control & comfortable typing experience.",
         color: [],
         size: [],
-        img: "./images/products/Frame 612 copy.png"
+        sell: 80,
+        img: "./images/products/Frame 612 copy.png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 3,
@@ -46,7 +52,12 @@ const products = [
         description: "Ultra-Wide Gaming Monitor High-resolution display with ultra-wide aspect ratio. Features rapid refresh rate and adaptive sync technology for smooth, immersive gameplay without motion blur.",
         color: [],
         size: [],
-        img: "./images/products/Frame 613.png"
+        sell: 50,
+        img: "./images/products/Frame 613.png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 4,
@@ -61,7 +72,12 @@ const products = [
         description: "Ergonomic Comfort Chair Premium quality materials with adjustable lumbar support and recline features. Provides maximum comfort for long hours of sitting with breathable mesh fabric.",
         color: [],
         size: [],
-        img: "./images/products/Frame 614.png"
+        sell: 90,
+        img: "./images/products/Frame 614.png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 5,
@@ -76,7 +92,12 @@ const products = [
         description: "Winter North Coat High-quality insulation with water-resistant exterior. Features multiple pockets, adjustable hood, and thermal lining for ultimate warmth & protection in cold climates.",
         color: [],
         size: [],
-        img: "./images/products/Frame 605.png"
+        sell: 50,
+        img: "./images/products/Frame 605.png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 6,
@@ -91,7 +112,12 @@ const products = [
         description: "Durable Duffle Bag High-quality fabric with reinforced stitching for heavy-duty use. Spacious compartments and multiple pockets for organized storage & easy access to essentials.",
         color: [],
         size: [],
-        img: "./images/products/Frame 606.png"
+        sell: 25,
+        img: "./images/products/Frame 606.png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 7,
@@ -106,7 +132,12 @@ const products = [
         description: "High-Performance CPU Cooler Efficient thermal design with multiple heat pipes and high airflow fan. Ensures optimal cooling & quiet operation for high-performance computing.",
         color: [],
         size: [],
-        img: "./images/products/Frame 610.png"
+        sell: 40,
+        img: "./images/products/Frame 610.png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 8,
@@ -121,12 +152,17 @@ const products = [
         description: "Compact Small Bookshelf Sturdy wood construction with adjustable shelves. Perfect for organizing books, decor, and small items in limited spaces. Sleek design fits any room decor.",
         color: [],
         size: [],
-        img: "./images/products/Frame 612.png"
+        sell: 10,
+        img: "./images/products/Frame 612.png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 9,
         name: "Breed Dry Dog Food",
-        category: "Homing", 
+        category: "Groceries", 
         rating: 3,
         numberRating: 35,
         stock: 99,
@@ -136,7 +172,12 @@ const products = [
         description: "Premium Dog Food High-quality ingredients with balanced nutrition for dogs of all sizes. Rich in essential vitamins and minerals to support overall health & vitality.",
         color: [],
         size: [],
-        img: "./images/products/Frame 604.png"
+        sell: 80,
+        img: "./images/products/Frame 604.png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 10,
@@ -151,7 +192,12 @@ const products = [
         description: "Canon DSLR Camera High-resolution sensor with advanced image processing for stunning photos and videos. Features fast autofocus and a versatile lens for creative photography.",
         color: [],
         size: [],
-        img: "./images/products/Frame 604 (1).png"
+        sell: 18,
+        img: "./images/products/Frame 604 (1).png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 11,
@@ -166,12 +212,17 @@ const products = [
         description: "High-Performance Gaming Laptop Powerful processor with advanced graphics card and high-refresh-rate display. Designed for immersive gaming and multitasking with customizable RGB keyboard.",
         color: [],
         size: [],
-        img: "./images/products/Frame 604 (2).png"
+        sell: 60,
+        img: "./images/products/Frame 604 (2).png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 12,
         name: "Curology Product Set",
-        category: "Fashion", 
+        category: "Health", 
         rating: 4.5,
         numberRating: 145,
         stock: 99,
@@ -181,12 +232,17 @@ const products = [
         description: "Curology Skincare Set Personalized skincare regimen with high-quality ingredients. Includes cleanser, custom formula, and moisturizer to address specific skin concerns & improve complexion.",
         color: [],
         size: [],
-        img: "./images/products/Frame 604 (3).png"
+        sell: 30,
+        img: "./images/products/Frame 604 (3).png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 13,
         name: "Kids Electric Car",
-        category: "Homing", 
+        category: "Baby", 
         rating: 5,
         numberRating: 65,
         stock: 99,
@@ -196,12 +252,17 @@ const products = [
         description: "Electric Ride-On Car for Kids High-quality materials with realistic design and safety features. Features rechargeable battery, working lights, and sounds for hours of fun driving.",
         color: [],
         size: [],
-        img: "./images/products/Frame 608.png"
+        sell: 10,
+        img: "./images/products/Frame 608.png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 14,
         name: "Jr. Zoom Soccer Cleats",
-        category: "Fashion", 
+        category: "Sport", 
         rating: 5,
         numberRating: 35,
         stock: 99,
@@ -211,7 +272,12 @@ const products = [
         description: "Professional Soccer Cleats Durable synthetic upper with advanced traction sole. Provides excellent grip, control, and comfort on the field for enhanced performance.",
         color: [],
         size: [],
-        img: "./images/products/Frame 608 (1).png"
+        sell: 10,
+        img: "./images/products/Frame 608 (1).png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 15,
@@ -226,7 +292,12 @@ const products = [
         description: "USB Wired Gamepad Controller High-quality buttons and responsive analog sticks. Compatible with PC and gaming consoles for precise control and comfortable gaming experience.",
         color: [],
         size: [],
-        img: "./images/products/Frame 608 (2).png"
+        sell: 50,
+        img: "./images/products/Frame 608 (2).png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     },
     {
         id: 16,
@@ -241,9 +312,18 @@ const products = [
         description: "Quilted Satin Jacket Luxurious satin exterior with quilted design and lightweight insulation. Features ribbed cuffs, collar, and hem for stylish warmth and comfort.",
         color: [],
         size: [],
-        img: "./images/products/Frame 608 (3).png"
+        sell: 10,
+        img: "./images/products/Frame 608 (3).png",
+        img2: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img3: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img4: "./images/products/landscape-placeholder-svgrepo-com.svg",
+        img5: "./images/products/landscape-placeholder-svgrepo-com.svg"
     }
 ];
+
+if (!localStorage.getItem("products")) {
+  localStorage.setItem("products", JSON.stringify(products));
+}
 
 function renderStars(rating) {
     let starHTML = '';

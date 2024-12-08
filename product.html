@@ -15,7 +15,7 @@
           <path d="M10 1.67c0.33 0 0.67 0.25 0.83 0.58l2.08 4.42 4.67 0.67c0.75 0.08 1 1 0.5 1.5l-3.42 3.33 0.83 4.67c0.17 0.75-0.67 1.33-1.33 1l-4.17-2.17-4.17 2.17c-0.67 0.33-1.5-0.25-1.33-1l0.83-4.67-3.42-3.33c-0.5-0.5-0.17-1.42 0.5-1.5l4.67-0.67 2.08-4.42c0.17-0.33 0.5-0.58 0.83-0.58z" />
         </symbol>
     </svg>
-    <div class="event">
+    <!-- <div class="event">
         <div class="event-group">
             <div class="event-group-left">
                 <div class="event-desciption">
@@ -28,21 +28,22 @@
                 <div class="language-choice">⌄</div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="header">
         <div class="navigation">
             <div class="logo">
                 <img src="./images/Logo.png" alt="">
             </div>
             <ul class="nav">
-                <li>Home</li>
-                <li>Contact</li>
-                <li>About</li>
-                <li>Sign Up</li>
+                <li id="home">Home</li>
+                <li id="contact">Contact</li>
+                <li id="about">About</li>
+                <li id="sign-up">Sign Up</li>
             </ul>
             <div class="header-right">
                 <div class="looking-item">
-                    <input type="text" id="looking" name="looking" placeholder="What are you looking for?">
+                    <input type="text" id="search-input" name="search-input" placeholder="What are you looking for?">
+                    <ul id="search-suggestions" class="suggestions-list"></ul>
                     <img src="./images/Component 2.png" alt="find">
                 </div>
             </div>
@@ -51,71 +52,6 @@
     <div class="body-container">
         <div class="path-to-ui"></div>
         <div class="product-info">
-            <!-- <div class="product-images">
-                <div><img src="./images/products/image 57.png" alt="Game controller"></div>
-                <div><img src="./images/products/image 58.png" alt="Game controller"></div>
-                <div><img src="./images/products/image 59.png" alt="Game controller"></div>
-                <div><img src="./images/products/image 61.png" alt="Game controller"></div>
-            </div>
-            <div></div>
-            <div class="product-thumb">
-                <img src="./images/products/image 63.png" alt="Game controller">
-            </div>
-            <div></div>
-            <div class="product-desciption">
-                <h1>Havic HV G-92 Gamepad</h1>
-                <div class="rate-and-stock">
-                    <div class="rating-star"></div>
-                    <p class="number-review">(150 Reviews)</p>
-                    <div class="straight-line"></div>
-                    <p class="in-stock">In Stock</p>
-                </div>
-                <p class="product-price">$192.00</p>
-                <p class="description">PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.</p>
-                <div class="horizontal-line"></div>
-                <div class="color-choice">
-                    <p>Colours:</p>
-                    <div class="product-color">
-                        <button></button>
-                        <button></button>
-                    </div>
-                </div>
-                <div class="size-choice">
-                    <p>Sizes:</p>
-                    <div class="product-size">
-                        <button>XS</button>
-                        <button>S</button>
-                        <button>M</button>
-                        <button>L</button>
-                        <button>XL</button>
-                    </div>
-                </div>
-                <div class="buy-quanity">
-                    <div class="buy-number">
-                        <button class="decrease-product">-</button>
-                        <button class="product-number">2</button>
-                        <button class="increase-product">+</button>
-                    </div>
-                    <button class="buy-now">Buy Now</button>
-                    <div class="wish-list"><img src="./images/products/Vector.svg" alt="Heart icon"></div>
-                </div>
-                <div class="priviledge">
-                    <div class="free-delivery">
-                        <img src="./images/products/icon-delivery.png" alt="Delivery icon">
-                        <div class="free-delivery-text">
-                            <h1>Free Delivery</h1>
-                            <p><u>Enter your postal code for Delivery Availability</u></p>
-                        </div>
-                    </div>
-                    <div class="return-delivery">
-                        <img src="./images/products/Icon-return.png" alt="Return icon">
-                        <div class="return-delivery-text">
-                            <h1>Return Delivery</h1>
-                            <p>Free 30 Days Delivery Returns. <u>Details</u></p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
     <div class="best-selling">
@@ -124,100 +60,6 @@
             <p class="title-text">Related Items</p>
         </div>
         <div class="products" id="related-items">
-            <!-- <div class="sale-product1">
-                <div class="product-container">
-                    <img src="./images/products/Frame 605.png" alt="sale item">
-                    <button class="add-to-cart">Add To Cart</button>
-                    <div class="favorite-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>heart-outline</title><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg></div>
-                    <div class="seen-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>eye-outline</title><path d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" /></svg></div>
-                </div>
-                <p class="product-name">The North Coat</p>
-                <div class="product-price">
-                    <p class="sale-price">$260</p>
-                    <p class="original-price">$360</p>
-                </div>
-                <div class="rating">
-                    <div class="rating-stars">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                    </div>
-                    <p class="rating-numbers">(65)</p>
-                </div>
-            </div>
-            <div class="sale-product2">
-                <div class="product-container">
-                    <img src="./images/products/Frame 606.png" alt="sale item">
-                    <button class="add-to-cart">Add To Cart</button>
-                    <div class="favorite-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>heart-outline</title><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg></div>
-                    <div class="seen-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>eye-outline</title><path d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" /></svg></div>
-                </div>
-                <p>Gucci duffle bag</p>
-                <div class="product-price">
-                    <p class="sale-price">$960</p>
-                    <p class="original-price">$1160</p>
-                </div>
-                <div class="rating">
-                    <div class="rating-stars">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating" class="star-gray">
-                        <img src="./images/star.svg" alt="rating" class="star-gold-half">
-                    </div>
-                    <p class="rating-numbers">(65)</p>
-                </div>
-            </div>
-            <div class="sale-product3">
-                <div class="product-container">
-                    <img src="./images/products/Frame 610.png" alt="sale item">
-                    <button class="add-to-cart">Add To Cart</button>
-                    <div class="favorite-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>heart-outline</title><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg></div>
-                    <div class="seen-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>eye-outline</title><path d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" /></svg></div>
-                </div>
-                <p class="product-name">RGB liquid CPU Cooler</p>
-                <div class="product-price">
-                    <p class="sale-price">$160</p>
-                    <p class="original-price">$170</p>
-                </div>
-                <div class="rating">
-                    <div class="rating-stars">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating" class="star-gray">
-                        <img src="./images/star.svg" alt="rating" class="star-gold-half">
-                    </div>
-                    <p class="rating-numbers">(65)</p>
-                </div>
-            </div>
-            <div class="sale-product4">
-                <div class="product-container">
-                    <img src="./images/products/Frame 612.png" alt="sale item">
-                    <button class="add-to-cart">Add To Cart</button>
-                    <div class="favorite-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>heart-outline</title><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg></div>
-                    <div class="seen-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>eye-outline</title><path d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" /></svg></div>
-                </div>
-                <p class="product-name">Small BookSelf</p>
-                <div class="product-price">
-                    <p class="sale-price">$360</p>
-                    <p class="original-price"></p>
-                </div>
-                <div class="rating">
-                    <div class="rating-stars">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                        <img src="./images/star.svg" alt="rating">
-                    </div>
-                    <p class="rating-numbers">(65)</p>
-                </div>
-            </div> -->
         </div>
     </div>
     <div class="footer">

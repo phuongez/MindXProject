@@ -25,6 +25,7 @@ function registerUser(name, email, password) {
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
     alert("Bạn đã đăng ký tài khoản thành công!");
+    window.location.href = "index.html";
   }
 
 const createAccountBtn = document.querySelector("#create-account");

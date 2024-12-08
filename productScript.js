@@ -1,4 +1,30 @@
-import products, {renderStars,displaySale,displayProductPrice} from "./product.js";
+import {renderStars,displaySale,displayProductPrice} from "./product.js";
+
+const homeButton = document.querySelector("#home");
+homeButton.addEventListener('click',() => {
+  window.location.href ="index.html";
+})
+
+const contactButton = document.querySelector("#contact");
+contactButton.addEventListener('click',() => {
+  window.location.href ="contact.html";
+})
+
+const aboutButton = document.querySelector("#about");
+aboutButton.addEventListener('click',() => {
+  window.location.href ="about.html";
+})
+
+const signUpButton = document.querySelector("#sign-up");
+signUpButton.addEventListener('click',() => {
+  window.location.href ="signup.html";
+})
+
+function getProductsFromLocalStorage() {
+    return JSON.parse(localStorage.getItem("products")) || [];
+  }
+  
+  const products = getProductsFromLocalStorage();
 
 const params = new URLSearchParams(window.location.search);
 const productId = parseInt(params.get('id'), 10);
@@ -31,7 +57,7 @@ function displayProductsInfo(product) {
                 <img src="${product.img}" alt="Product Image">
             </div>
             <div></div>
-            <div class="product-desciption">
+            <div class="product-desciption" data-id=${product.id}>
                 <h1>${[product.name]}</h1>
                 <div class="rate-and-stock">
                     <div class="rating-star">${renderStars(product.rating)}</div>
@@ -48,7 +74,7 @@ function displayProductsInfo(product) {
                         <button class="product-number">1</button>
                         <button class="increase-product">+</button>
                     </div>
-                    <button class="buy-now">Buy Now</button>
+                    <button class="buy-now">Add To Cart</button>
                     <div class="wish-list"><img src="./images/products/Vector.svg" alt="Heart icon"></div>
                 </div>
                 <div class="priviledge">
@@ -76,46 +102,11 @@ function displayColorChoice() {
 
 }
 
-// function renderStars(rating) {
-//     let starHTML = '';
-//     for (let i = 1; i <= 5; i++) {
-//       if (rating >= i) {
-//         // Sao vàng đầy
-//         starHTML += `
-//           <div class="star-container">
-//             <svg class="star-svg">
-//               <use href="#star-shape"></use>
-//             </svg>
-//           </div>`;
-//       } else if (rating >= i - 0.5) {
-//         // Sao nửa vàng
-//         starHTML += `
-//           <div class="star-container">
-//             <svg class="star-svg gray">
-//               <use href="#star-shape"></use>
-//             </svg>
-//             <svg class="star-svg yellow">
-//               <use href="#star-shape"></use>
-//             </svg>
-//           </div>`;
-//       } else {
-//         // Sao xám
-//         starHTML += `
-//           <div class="star-container">
-//             <svg class="star-svg gray">
-//               <use href="#star-shape"></use>
-//             </svg>
-//           </div>`;
-//       }
-//     }
-//     return starHTML;
-//   }
-
 pathToProduct(selectedProduct)
 displayProductsInfo(selectedProduct)
 
 //Display related products
-const relatedItems = products.filter((product) => product.category===selectedProduct.category);
+const relatedItems = products.filter((product) => product.category===selectedProduct.category).filter(product => product.id !== selectedProduct.id);
 const relatedProductContainer = document.getElementById('related-items');
     relatedItems.forEach(product => {
     const relatedProductHTML = `
@@ -142,5 +133,44 @@ const relatedProductContainer = document.getElementById('related-items');
     relatedProductContainer.innerHTML += relatedProductHTML;
   });
 
+  
 
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-input");
+    const suggestionsList = document.getElementById("search-suggestions");
+  
+    searchInput.addEventListener("input", () => {
+      const keyword = searchInput.value.trim().toLowerCase();
+      const products = getProductsFromLocalStorage();
+  
+      const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(keyword)
+      );
+  
+      suggestionsList.innerHTML = "";
+      filteredProducts.forEach(product => {
+        const suggestionItem = document.createElement("li");
+        suggestionItem.innerHTML = `
+          <a href="product.html?id=${product.id}" class="search-item" data-id=${product.id}>
+            <img src="${product.img}" alt="Product thumbail" class="search-item-img">
+            <span class="search-item-name">${product.name}</span>
+          </a>  
+        `;
+        suggestionsList.appendChild(suggestionItem);
+      });
+  
+      suggestionsList.style.display = filteredProducts.length > 0 ? "flex" : "none";
+    });
+  });
+
+// Tính năng chưa hoàn thành
+document.querySelector(".buy-now").addEventListener('click',() => {
+    alert("Tính năng đang hoàn thiện");
+})  
+document.querySelector(".increase-product").addEventListener('click',() => {
+    alert("Tính năng đang hoàn thiện");
+})  
+document.querySelector(".decrease-product").addEventListener('click',() => {
+    alert("Tính năng đang hoàn thiện");
+}) 
 
