@@ -63,32 +63,66 @@ function displayFlashProducts(products) {
 
 displayFlashProducts(flashSaleProducts);
 
+// function displayBestSellProducts(products) {
+//   const productContainer = document.getElementById('best-sell');
+//   products.forEach(product => {
+//   const productHTML = `
+//     <div class="sale-product">
+//               <div class="product-container" data-id=${product.id} data-name="${product.name}" data-price=${product.discountPrice} data-image="${product.img}">
+//                   <a href="product.html?id=${product.id}">
+//                       <img src="${product.img}" alt="sale item">
+//                   </a>
+//                   <div class="sale-percentage">${product.discountRate}%</div>
+//                   <button class="add-to-cart">Add To Cart</button>
+//                   <div class="favorite-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>heart-outline</title><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg></div>
+//               </div>
+//               <a href="product.html?id=${product.id}" class="product-name">${product.name}</a>
+//               <div class="product-price">
+//                   <p class="sale-price">$${product.discountPrice}</p>
+//                   <p class="original-price">$${product.price}</p>
+//               </div>
+//               <div class="rating">
+//                   <div class="rating-stars">${renderStars(product.rating)}</div>
+//                   <p class="rating-numbers">(${product.numberRating})</p>
+//               </div>
+//           </div>
+//   `;
+//   productContainer.innerHTML += productHTML;
+// });
+// }
+
 function displayBestSellProducts(products) {
   const productContainer = document.getElementById('best-sell');
-  products.forEach(product => {
-  const productHTML = `
-    <div class="sale-product">
-              <div class="product-container" data-id=${product.id} data-name="${product.name}" data-price=${product.discountPrice} data-image="${product.img}">
-                  <a href="product.html?id=${product.id}">
-                      <img src="${product.img}" alt="sale item">
-                  </a>
-                  <div class="sale-percentage">${product.discountRate}%</div>
-                  <button class="add-to-cart">Add To Cart</button>
-                  <div class="favorite-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>heart-outline</title><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg></div>
-              </div>
-              <a href="product.html?id=${product.id}" class="product-name">${product.name}</a>
-              <div class="product-price">
-                  <p class="sale-price">$${product.discountPrice}</p>
-                  <p class="original-price">$${product.price}</p>
-              </div>
-              <div class="rating">
-                  <div class="rating-stars">${renderStars(product.rating)}</div>
-                  <p class="rating-numbers">(${product.numberRating})</p>
-              </div>
+  const productHTMLArray = products.map(product => {
+    const isOnSale = product.discountRate > 0;
+    return `
+      <div class="sale-product">
+        <div class="product-container" data-id="${product.id}" data-name="${product.name}" data-price="${product.discountPrice}" data-image="${product.img}">
+          <a href="product.html?id=${product.id}">
+            <img src="${product.img}" alt="sale item">
+          </a>
+          ${isOnSale ? `<div class="sale-percentage">${product.discountRate}%</div>` : ""}
+          <button class="add-to-cart">Add To Cart</button>
+          <div class="favorite-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>heart-outline</title>
+              <path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
+            </svg>
           </div>
-  `;
-  productContainer.innerHTML += productHTML;
-});
+        </div>
+        <a href="product.html?id=${product.id}" class="product-name">${product.name}</a>
+        <div class="product-price">
+          <p class="sale-price">$${product.discountPrice}</p>
+          <p class="original-price">$${product.price}</p>
+        </div>
+        <div class="rating">
+          <div class="rating-stars">${renderStars(product.rating)}</div>
+          <p class="rating-numbers">(${product.numberRating})</p>
+        </div>
+      </div>
+    `;
+  });
+  productContainer.innerHTML = productHTMLArray.join('');
 }
 
 displayBestSellProducts(sortedSaleProduct)
@@ -204,30 +238,36 @@ updateCountdown();
 
 //Our product display
 const ourProductContainer = document.getElementById('full-product-section');
-  products.forEach(product => {
-  const productHTML = `
+const productHTMLArray = products.map(product => {
+  const isOnSale = product.discountRate > 0;
+  return `
     <div class="sale-product">
-              <div class="product-container" data-id=${product.id} data-name="${product.name}" data-price=${product.discountPrice} data-image="${product.img}">
-                  <a href="product.html?id=${product.id}">
-                      <img src="${product.img}" alt="sale item">
-                  </a>
-                  <div class="sale-percentage">${product.discountRate}%</div>
-                  <button class="add-to-cart">Add To Cart</button>
-                  <div class="favorite-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>heart-outline</title><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg></div>
-              </div>
-              <a href="product.html?id=${product.id}" class="product-name">${product.name}</a>
-              <div class="product-price">
-                  <p class="sale-price">$${product.discountPrice}</p>
-                  <p class="original-price">$${product.price}</p>
-              </div>
-              <div class="rating">
-                  <div class="rating-stars">${renderStars(product.rating)}</div>
-                  <p class="rating-numbers">(${product.numberRating})</p>
-              </div>
-          </div>
+      <div class="product-container" data-id="${product.id}" data-name="${product.name}" data-price="${product.discountPrice}" data-image="${product.img}">
+        <a href="product.html?id=${product.id}">
+          <img src="${product.img}" alt="sale item">
+        </a>
+        ${isOnSale ? `<div class="sale-percentage">${product.discountRate}%</div>` : ""}
+        <button class="add-to-cart">Add To Cart</button>
+        <div class="favorite-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>heart-outline</title>
+            <path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
+          </svg>
+        </div>
+      </div>
+      <a href="product.html?id=${product.id}" class="product-name">${product.name}</a>
+      <div class="product-price">
+        <p class="sale-price">$${product.discountPrice}</p>
+        <p class="original-price">$${product.price}</p>
+      </div>
+      <div class="rating">
+        <div class="rating-stars">${renderStars(product.rating)}</div>
+        <p class="rating-numbers">(${product.numberRating})</p>
+      </div>
+    </div>
   `;
-  ourProductContainer.innerHTML += productHTML;
-}); 
+});
+ourProductContainer.innerHTML = productHTMLArray.join('');
 
 const showAllButton = document.getElementById('view-all-product-button'); 
 const productGrid = document.getElementById('full-product-section'); 
