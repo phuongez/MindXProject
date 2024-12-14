@@ -1,6 +1,5 @@
   
 function displayItemInCart() {
-    // const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartData = localStorage.getItem('cart');
     const cart = JSON.parse(cartData);
     const itemContainer = document.getElementById('cart-product');
@@ -8,7 +7,7 @@ function displayItemInCart() {
   
     cart.forEach(item => {
       const itemHTML = `
-      <div class="cart-product">
+      <div class="cart-product" data-id=${item.id}>
         <div class="cart-product-image">
           <img src="${item.image}" alt="Product Image">
           <div class="cart-product-delete">
@@ -47,11 +46,12 @@ document.addEventListener('click', (e) => {
   
       if (productInCart) {
         productInCart.quantity += 1;
-  
+        
         const quantityElement = productElement.querySelector('.cart-quantity');
         quantityElement.textContent = productInCart.quantity;
   
         localStorage.setItem('cart', JSON.stringify(cart));
+        updateSubtotal();
       }
     }
   });
@@ -61,29 +61,40 @@ document.addEventListener('click', (e) => {
       const productElement = e.target.closest('.cart-product-quantity-container');
       const productId = productElement.dataset.id;
   
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
       const productInCart = cart.find(item => item.id === productId);
   
       if (productInCart) {
         productInCart.quantity -= 1;
 
         if (productInCart.quantity <= 0) {
-            const productContainer = e.target.closest('.cart-product');
-            productContainer.remove();
-        }
+            const productToDelete = e.target.closest('.cart-product');
+            productToDelete.remove();
+            const productId = productToDelete.dataset.id;
+            const productDeleteFromCart = cart.find(item => item.id === productId);
+            cart = cart.filter(product => product.id !== productDeleteFromCart.id); 
+            localStorage.setItem('cart', JSON.stringify(cart));
+          }
   
         const quantityElement = productElement.querySelector('.cart-quantity');
         quantityElement.textContent = productInCart.quantity;
   
         localStorage.setItem('cart', JSON.stringify(cart));
+        updateSubtotal();
       }
     }
   });
   
+  // Nút xoá sản phẩm khỏi giỏ hàng
   document.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-item')) {
         const productToDelete = e.target.closest('.cart-product');
         productToDelete.remove();
+        const productId = productToDelete.dataset.id;
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const productDeleteFromCart = cart.find(item => item.id === productId);
+        cart = cart.filter(product => product.id !== productDeleteFromCart.id); 
+        localStorage.setItem('cart', JSON.stringify(cart));
     }
   })
   
@@ -96,6 +107,19 @@ document.addEventListener('click', (e) => {
     })
 
   document.addEventListener("DOMContentLoaded", () => {
+    updateSubtotal();
+  });
+
+  document.querySelector(".checkout-button").addEventListener('click',()=>{
+    alert("Tính năng đang hoàn thiện");
+  })
+
+  document.querySelector(".apply-coupon-btn").addEventListener('click',()=>{
+    alert("Tính năng đang hoàn thiện");
+  })
+
+  // Bổ sung 11-12
+  function updateSubtotal() {
     const cartSubtotal = document.getElementById("cart-subtotal");
     const totalCost = document.getElementById("total-cost");
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -110,15 +134,7 @@ document.addEventListener('click', (e) => {
       cartSubtotal.textContent = "$0";
     }
     totalCost.textContent = cartSubtotal.textContent;
-  });
-
-  document.querySelector(".checkout-button").addEventListener('click',()=>{
-    alert("Tính năng đang hoàn thiện");
-  })
-
-  document.querySelector(".apply-coupon-btn").addEventListener('click',()=>{
-    alert("Tính năng đang hoàn thiện");
-  })
+  }
 
   
     

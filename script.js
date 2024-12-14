@@ -1,6 +1,4 @@
 import {renderStars,displaySale,displayProductPrice} from "./product.js";
-// import products, {renderStars,displaySale,displayProductPrice} from "./product.js";
-
 
 const homeButton = document.querySelector("#home");
 homeButton.addEventListener('click',() => {
@@ -100,8 +98,8 @@ const carousel = document.querySelector('#product-list');
 const nextButton = document.querySelector('#next-btn');
 const prevButton = document.querySelector('#prev-btn');
 
-let currentIndex = 0; // Vị trí sản phẩm đầu tiên
-const productWidth = 270; // Chiều rộng của mỗi sản phẩm (theo CSS)
+let currentIndex = 0;
+const productWidth = 270; // Chiều rộng của mỗi sản phẩm
 
 // Hàm để trượt đến sản phẩm tiếp theo
 prevButton.addEventListener('click', () => {
@@ -247,12 +245,11 @@ const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 scrollToTopBtn.addEventListener('click', () => {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth' // Cuộn mượt mà
+    behavior: 'smooth'
   });
 });
 
 //Tính năng giỏ hàng
-const cart = [];
 const cartDisplay = document.querySelector(".cart-icon");
 
 function addToCart(product) {
@@ -308,18 +305,15 @@ userCartButton.addEventListener('click', () => {
     window.location.href = 'cart.html';
 });
 
-// Xóa dữ liệu giỏ hàng khỏi Local Storage
-window.addEventListener('DOMContentLoaded', () => {
-  localStorage.removeItem('cart'); 
-});
-
 //Thay đổi hiển thị khi người dùng đăng nhập
 document.addEventListener('DOMContentLoaded', () => {
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
   const userButton = document.getElementById("user-button");
   const userOptions = document.getElementById("user-options");
+  const signupBtn = document.getElementById("sign-up");
   if(currentUser) {
     userButton.style.display = "block";
+    signUpButton.style.display = "none"; //Ẩn Sign-up khi đăng nhập
     userButton.addEventListener('click',(e) => {
       e.stopPropagation();
       userOptions.classList.toggle("show");
@@ -348,6 +342,11 @@ const logoutBtn = document.getElementById("logout");
 logoutBtn.addEventListener('click',() =>{
   logoutUser();
   document.getElementById("user-button").style.display = "none";
+  document.getElementById("sign-up").style.display = "block";
+  let cart = JSON.parse(localStorage.getItem('cart'));
+  cart = [];
+  localStorage.setItem('cart', JSON.stringify(cart));
+  displayItemsNumber();
 })
 
 //Gợi ý sản phẩm tìm kiếm
@@ -468,4 +467,4 @@ document.querySelectorAll(".account-option").addEventListener('click',() => {
   alert("Tính năng đang hoàn thiện");
 })
 
-export {cart};
+// export {cart};
